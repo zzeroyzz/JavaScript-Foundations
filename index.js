@@ -134,12 +134,14 @@ function variableInterestRate(principal,interestRate,years,creditScore){
   let monthlyRate =  Math.round(principal *numerator/denominator).toFixed(2);
  
   for (let i = 0; i < 10; i++) {
-        monthlyRate =  Math.round(principal *numerator/denominator).toFixed(2)
+        monthlyRate =  Math.round(principal*numerator/denominator).toFixed(2)
+
         console.log(name + ', with an interest rate of ' + interestRate.toFixed(3) + ' your monthly rate is $' + Math.round(monthlyRate));
     interestRate= interestRate+=0.005;
     
 
     }
+  return;
 }
  variableInterestRate(200000, 0.04, 30);
    
