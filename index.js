@@ -96,7 +96,7 @@ function mortgageCalculator(principal,interestRate,years,creditScore){
   return message;
 }
  
- console.log (mortgageCalculator(200000,0.05,30));
+ // console.log (mortgageCalculator(200000,0.05,30));
 
 
 
@@ -114,19 +114,34 @@ For example, variableInterestRate(200000, 0.04, 30) should console.log:
 "{Name}, with an interest rate of 0.06, your monthly rate is $1199"
 */
 
-function variableInterestRate(principal,interestRate,years){
+function variableInterestRate(principal,interestRate,years,creditScore){
+  if(creditScore>740){
+    interestRate = interestRate - (0.5/100);
+  }
+  else if(creditScore<660){
+    interestRate = interestRate + (0.5/100);
+  }
+  else{
+      interestRate = interestRate;
+   }
+  
+     interestRate= interestRate -= 0.02;
+
   let monthlyInterestRate = interestRate / 12;
   let periods = years * 12;
   let numerator = monthlyInterestRate*(Math.pow((1+ monthlyInterestRate),periods));
   let denominator =(Math.pow((1+monthlyInterestRate),periods))-1;
   let monthlyRate =  Math.round(principal *numerator/denominator).toFixed(2);
  
-  for (let i= interestRate - .02; i < interestRate + .02; i += .005) {
-        monthlyRate = monthlyRate + Math.round(monthlyRate * interestRate);
-        console.log(name + ', with an interest rate of ' + interestRate.toFixed(2) + ' your monthly rate is $' + Math.round(monthlyRate));
+  for (let i = 0; i < 10; i++) {
+        monthlyRate =  Math.round(principal *numerator/denominator).toFixed(2)
+        console.log(name + ', with an interest rate of ' + interestRate.toFixed(3) + ' your monthly rate is $' + Math.round(monthlyRate));
+    interestRate= interestRate+=0.005;
+    
+
     }
 }
- variableInterestRate(200000, 0.06, 30);
+ variableInterestRate(200000, 0.04, 30);
    
 
 // 🌟🌟🌟 STRETCH 🌟🌟🌟//
